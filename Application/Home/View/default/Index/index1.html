@@ -1,0 +1,84 @@
+<extend name="Base/common"/>
+
+<block name='seo'>
+    <title>{:C('WEB_SITE_TITLE')}</title>
+    <meta content="{:C('WEB_SITE_DESCRIPTION')}" name="description">
+    <meta content="{:C('WEB_SITE_KEYWORD')}" name='keywords'>
+</block>
+
+<block name="body">
+<div class="container content">		
+    	<div class="row blog-page">    
+            <!-- Left Sidebar -->
+        	<div class="col-md-9 md-margin-bottom-40">
+                <!--Blog Post-->
+
+                <volist name='lists' id='vo'>
+                <div class="row blog blog-medium margin-bottom-40">
+                    <div class="col-md-5">
+                        <img class="img-responsive" src="{$vo.img_url}" alt="">
+                    </div>   
+                    <div class="col-md-7">
+                        <h2><a href="{:U('article/'.$vo['id'])}">{$vo.title}</a></h2>
+                        <ul class="list-unstyled list-inline blog-info">
+                            <li><i class="fa fa-calendar"></i> {$vo.create_time|date='Y-m-d',###}</li>
+
+							<li><i class="glyphicon glyphicon-eye-open"></i> {$vo.view} 浏览</li>
+                            <li><i class="fa fa-comments"></i> <a href="{:U('article/'.$vo['id'])}" id="uyan_count_unit" du="" su="">0条评论</a></li>
+                            <li><i class="fa fa-tags"></i> {$vo.category_name}</li>
+                            
+                        </ul>
+                        <p>
+                            {$vo.content|trim|strip_tags|msubstr=0,150,'utf8',false}
+                        </p>
+                        <p><a href="{:U('article/'.$vo['id'])}" class="btn-u btn-u-small"><i class="fa fa-location-arrow"></i> Read More</a></p>
+                    </div>    
+                </div> 
+                <hr class="margin-bottom-40">                    
+                </volist>
+
+                <!--End Blog Post-->        
+   
+                
+                <!--Pagination-->
+                <div class="text-center">
+                    <ul class='pagination'>
+                        {$page}
+                    </ul>                                                            
+                </div>
+                <!--End Pagination-->
+            </div>
+            <!-- End Left Sidebar -->
+
+            <!-- Right Sidebar -->
+        	<div class="col-md-3">
+
+                <!-- Posts -->
+                <div class="posts margin-bottom-40">
+                    <div class="headline headline-md"><h2>最新发表</h2></div>
+                    <volist name='recent' id='recent' offset='0' length='5'>
+                    <dl class="dl-horizontal">
+                        <dt><span class="glyphicon glyphicon-pushpin"></span></dt>
+                        <dd>
+                            <p><a href="{:U('article/'.$recent['id'])}">{$recent['title']}</a></p>
+                           
+                        </dd>
+                    </dl>
+                    </volist>
+                    
+                    
+                </div><!--/posts-->
+                <!-- End Posts -->
+                
+
+            </div>
+            <!-- End Right Sidebar -->
+        </div><!--/row-->        
+    </div>
+</block>    
+    
+
+
+
+
+

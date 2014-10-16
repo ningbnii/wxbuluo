@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:/admin.php
+Disallow:/user/
+Sitemap:http://www.wxbuluo.com/sitemap.xml

@@ -1,0 +1,101 @@
+
+    <div class="header">
+        <!-- Topbar -->
+        <div class="topbar">
+            
+        </div>
+        <!-- End Topbar -->
+    
+        <!-- Navbar -->
+        <nav role="navigation" class="navbar navbar-default">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button data-target=".navbar-responsive-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <a href="/" class="navbar-brand">
+                        <img alt="Logo" src="__STATIC__/assets/img/logo1-default.png" id="logo-header">
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-responsive-collapse">   
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="/">首页</a>   
+                        </li>
+                        <!-- End Search Block -->
+                        <!-- Home -->
+                        <php>
+                            foreach($nav as $k=>$v){
+                                $count = count($v);                                
+                        </php>
+
+                        
+                        <li <if condition="$count gt 1">class="dropdown"</if>>
+                            <a href="{:U('category/'.$v[0]['name'])}" class="dropdown-toggle" >
+                            <php>echo $v[0]['title']</php>
+                            </a>
+                            <php>
+                                if($count>1){
+                            </php>
+                            <ul class="dropdown-menu">
+                                <php>
+                                    
+                                    for($i=1;$i<$count;$i++){
+                                </php>
+                                <li><a href="{:U('category/'.$v[$i]['name'])}"><php>echo $v[$i]['title'];</php></a></li>
+                                <php>
+                                    }
+                                </php>
+                            </ul>
+                            <php>
+                                }
+                            </php>
+                        </li>
+                        <php>
+                        }
+                        </php>
+                        <!-- End Home -->
+
+                        <!-- Search Block -->
+                        <li>
+                            <i class="search fa fa-search search-btn"></i>
+                            <div class="search-open">
+                                <div class="input-group animated fadeInDown">
+                                    <input class="form-control" placeholder="Search" type="text">
+                                    <span class="input-group-btn">
+                                        <button class="btn-u" type="button">Go</button>
+                                    </span>
+                                </div>
+                            </div>    
+                        </li>
+                        <!-- End Search Block -->
+                    </ul>
+                </div><!--/navbar-collapse-->
+            </div>    
+        </nav>            
+        <!-- End Navbar -->
+    </div>
+    <!--=== End Header ===--> 
+
+    <div class="slider-inner">
+        <div style="background-position: 0% 0%;" id="da-slider" class="da-slider">
+            <div class="da-slide da-slide-fromleft da-slide-current">
+                <h2><i>CLEAN &amp; FRESH</i> <br> <i>FULLY RESPONSIVE</i> <br> <i>DESIGN</i></h2>
+                <p><i>Lorem ipsum dolor amet</i> <br> <i>tempor incididunt ut</i> <br> <i>veniam omnis </i></p>
+                <div class="da-img"><img class="img-responsive" src="__STATIC__/assets/plugins/parallax-slider/img/1.png" alt=""></div>
+            </div>
+            <div class="da-slide">
+                <h2><i>USING BEST WEB</i> <br> <i>SOLUTIONS WITH</i> <br> <i>HTML5/CSS3</i></h2>
+                <p><i>Lorem ipsum dolor amet</i> <br> <i>tempor incididunt ut</i> <br> <i>veniam omnis </i></p>
+                <div class="da-img"><img src="__STATIC__/assets/plugins/parallax-slider/img/html5andcss3.png" alt="image01"></div>
+            </div>
+            <div class="da-arrows">
+                <span class="da-arrows-prev"></span>
+                <span class="da-arrows-next"></span>        
+            </div>
+        <nav class="da-dots"><span class="da-dots-current"></span><span class=""></span><span></span></nav></div>
+    </div>

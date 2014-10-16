@@ -1,0 +1,86 @@
+<extend name="Base/common"/>
+<block name='extra'>
+    <link rel="stylesheet" href="__STATIC__/assets/css/pages/feature_timeline1.css">
+</block>
+ 
+ <block name='seo'>
+    <title>{$category['meta_title']}-{:C('WEB_SITE_TITLE')}</title>
+    <meta content="{$category['description']}" name="description">
+    <meta content="{$category['keywords']}" name='keywords'>
+</block>
+
+<block name="body">
+<div class="container content">     
+                <ul class="timeline-v1">
+                <volist name='lists' id='vo'>
+                <eq name='mod' value='0'>
+            <li>
+                <div class="timeline-badge primary"><i class="glyphicon glyphicon-record"></i></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <img class="img-responsive" src="__STATIC__/assets/img/timeline/img1.1.jpg" alt=""/>
+                    </div>
+                    <div class="timeline-body text-justify">
+                        <h2><a href="{:U('article/'.$vo['id'])}">{$vo.title}</a></h2>
+                        <p>
+                            <if condition="$vo['description'] neq ''">
+                                {$vo.description|trim|strip_tags|msubstr=0,150,'utf8',false}
+                            <else/>
+                                {$vo.content|trim|strip_tags|msubstr=0,150,'utf8',false}
+                            </if>
+                        </p>
+                        <a class="btn-u btn-u-sm" href="{:U('article/'.$vo['id'])}">Read More</a>
+                    </div>
+                    <div class="timeline-footer">
+                        <ul class="list-unstyled list-inline blog-info">
+                            <li><i class="fa fa-clock-o"></i> {$vo.create_time|date='Y-m-d',###}</li>
+                            
+                            <li><i class="fa fa-comments"></i> <a href="{:U('article/'.$vo['id'])}" id="uyan_count_unit" du="" su="">0条评论</a></li>
+                        </ul>
+                        <a class="likes" href="#"><i class="fa fa-heart"></i>{$vo.view}</a>
+                    </div>
+                </div>
+            </li>
+            </eq>
+            <eq name='mod' value='1'>
+            <li class="timeline-inverted">
+                <div class="timeline-badge primary"><i class="glyphicon glyphicon-record invert"></i></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <img class="img-responsive" src="__STATIC__/assets/img/timeline/img1.2.jpg" alt=""/>
+                    </div>
+                    <div class="timeline-body text-justify">
+                        <h2><a href="{:U('article/'.$vo['id'])}">{$vo.title}</a></h2>
+                        <p>
+                            <if condition="$vo['description'] neq ''">
+                                {$vo.description|trim|strip_tags|msubstr=0,150,'utf8',false}
+                            <else/>
+                                {$vo.content|trim|strip_tags|msubstr=0,150,'utf8',false}
+                            </if>
+                        </p>
+                        <a class="btn-u btn-u-sm" href="{:U('article/'.$vo['id'])}">Read More</a>
+                    </div>
+                    <div class="timeline-footer">
+                        <ul class="list-unstyled list-inline blog-info">
+                            <li><i class="fa fa-clock-o"></i> {$vo.create_time|date='Y-m-d',###}</li>
+                           
+                            <li><i class="fa fa-comments"></i> <a href="{:U('article/'.$vo['id'])}" id="uyan_count_unit" du="" su="">0条评论</a></li>
+                        </ul>
+                        <a class="likes" href="#"><i class="fa fa-heart"></i>{$vo.view}</a>
+                    </div>
+                </div>
+            </li>
+			</eq>
+			</volist>
+            
+
+            <li class="clearfix" style="float: none;"></li>
+        </ul>       
+    </div>
+</block>    
+    
+
+
+
+
+

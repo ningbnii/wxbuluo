@@ -1,0 +1,98 @@
+<extend name="Base/common"/>  
+
+<block name="head">
+    
+    <title>{$info['title']}-{:C('WEB_SITE_TITLE')}</title>
+
+    <meta content="{$info['description']}" name='description'>
+    <meta content="{$info['keywords']}" name='keywords'>
+    
+<include file="Public/head"/>
+<link rel="stylesheet" href="__STATIC__/assets/css/pages/blog.css">
+</block>
+
+
+    <!--=== Content Part ===-->
+    <block name="body">
+    <div class="breadcrumbs">
+        <div class="container">
+            
+            <ul class="pull-left breadcrumb">
+                <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+                <php>
+                    $count = count($breadcrumb);
+
+                    for($i = $count-1;$i>=0;$i--){
+                </php>
+                    <li><a href="{:U('category/'.$breadcrumb[$i]['name'])}"><php>echo $breadcrumb[$i]['title'];</php></a></li>
+                <php>
+                }
+                    
+                </php>
+            </ul>
+        </div>
+    </div>
+    <div class="container content">     
+        <div class="row blog-page blog-item">
+            <!-- Left Sidebar -->
+            <div class="col-md-9 md-margin-bottom-60">
+                <!--Blog Post-->        
+                <div class="blog margin-bottom-40">
+                    <h2>{$info.title}</h2>
+                    <div class="blog-post-tags">
+                        <ul class="list-unstyled list-inline blog-info">
+                            <li><i class="fa fa-calendar"></i> {$info.create_time|date='Y-m-d',###}</li>
+                            <li><i class="glyphicon glyphicon-eye-open"></i> {$info.view} 浏览</li>
+                            <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1964958"></script>
+                            <li><i class="fa fa-comments"></i> <a href="__SELF__" id="uyan_count_unit" du="" su="">0条评论</a></li>
+                        </ul>
+                                              
+                    </div>
+                    {$info.content}          
+                </div>
+                <!--End Blog Post-->
+                <hr>        
+                上一篇：<if condition="$next neq ''"><a href="{:U('article/'.$next['id'])}">{$next['title']}</a><else/>没啦</if><br>
+                下一篇：<if condition="$prev neq ''"><a href="{:U('article/'.$prev['id'])}">{$prev.title}</a><else/>没啦</if>
+                <hr>
+                {:hook('documentDetailAfter',$info)}
+            </div>
+            <!-- End Left Sidebar -->
+
+            <!-- Right Sidebar -->
+            <div class="col-md-3 magazine-page">
+                <!-- Search Bar -->
+                <!--div class="headline headline-md"><h2>Search</h2></div>            
+                <div class="input-group margin-bottom-40">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-btn">
+                        <button class="btn-u" type="button">Go</button>
+                    </span>
+                </div-->
+                <!-- End Search Bar -->
+
+                <!-- Posts -->
+                <div class="posts margin-bottom-40">
+                    <div class="headline headline-md"><h2>最近更新</h2></div>
+                    <volist name='recent' id='recent'>
+                    <dl class="dl-horizontal">
+                        <dt><span class="glyphicon glyphicon-pushpin"></span></dt>
+                        <dd>
+                            <p><a href="{:U('article/'.$recent['id'])}">{$recent.title}</a></p> 
+                        </dd>
+                    </dl>
+                    </volist>
+
+                </div><!--/posts-->
+                <!-- End Posts -->
+
+
+            </div>
+            <!-- End Right Sidebar -->
+        </div><!--/row-->        
+    </div>
+
+    </block>
+    <!--/container-->     
+    <!--=== End Content Part ===-->
+
